@@ -17,7 +17,7 @@ const Links = [
 
 export default function Header() {
   return (
-    <header className="bg-white text-black py-1 px-4 flex justify-evenly font-semibold">
+    <header className="text-slate-100 bg-slate-950 py-3 px-4 flex justify-evenly font-semibold text-xl">
       {Links.map(({ label, href }) => {
         return (
           <Link key={label} href={href}>
