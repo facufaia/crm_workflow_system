@@ -208,7 +208,7 @@ export default function NewOrderForm() {
               <FormItem>
                 <FormLabel className="text-xl">Quantity</FormLabel>
                 <FormControl>
-                  <Input placeholder="Quantity" type="Number" {...field} />
+                  <Input placeholder="Quantity" type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -225,7 +225,7 @@ export default function NewOrderForm() {
                 <FormControl>
                   <Input
                     placeholder="Reference Cost"
-                    type="Number"
+                    type="number"
                     {...field}
                   />
                 </FormControl>

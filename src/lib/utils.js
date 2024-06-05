@@ -1,11 +1,43 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import IcoEdit from "@/app/components/icons/IcoEdit";
+import IcoTrash from "@/app/components/icons/IcoTrash";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
 export const columns = [
+  {
+    id: "edit",
+    cell: (row) => {
+      console.log(row);
+      return (
+        <button
+          onClick={() => {
+            console.log("edit", row);
+          }}
+        >
+          Edit <IcoEdit />
+        </button>
+      );
+    },
+  },
+  {
+    id: "delete",
+    cell: (row) => {
+      console.log(row);
+      return (
+        <button
+          onClick={() => {
+            console.log("delete", row);
+          }}
+        >
+          Delete <IcoTrash />
+        </button>
+      );
+    },
+  },
   {
     header: "Order ID",
     accessorKey: "matrix_id",

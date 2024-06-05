@@ -24,11 +24,8 @@ export const orderSchema = z
     GBRSalesPI: z
       .string()
       .min(4, "GBR Sales PI must be at least 4 characters long"),
-    quantity: z.number().int().positive("Quantity must be specified"),
-    supplierReferenceCost: z
-      .number()
-      .int()
-      .positive("Reference cost must be specified"),
+    quantity: z.string().transform(parseFloat),
+    referenceCost: z.string().transform(parseFloat),
     advanceResponsible: z
       .string()
       .refine(
