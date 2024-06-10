@@ -20,25 +20,28 @@ import {
   Select,
 } from "@/components/ui/select";
 import { orderSchema } from "@/app/validations/orderSchema.jsx";
+import { useModalStore } from "@/app/context/modal";
 
-export default function NewOrderForm() {
+export default function EditOrderForm() {
+  const { modalData } = useModalStore();
+
   const form = useForm({
     resolver: zodResolver(orderSchema),
     defaultValues: {
-      productCode: "",
-      productFamily: "",
-      productType: "",
-      changeNeeded: "",
-      packManualLanguages: "",
-      packagingRequirement: "",
-      specifyRequiredCertificate: "",
-      GBRSalesPI: "",
-      quantity: "",
-      referenceCost: "",
-      brand: "",
-      masterCarton: false,
-      isNewProduct: "",
-      advanceResponsible: "",
+      productCode: modalData?.gbr_product_code,
+      productFamily: modalData?.product_family,
+      productType: modalData?.product_type,
+      changeNeeded: modalData?.change_needed,
+      packManualLanguages: modalData?.pack_and_manual_languages,
+      packagingRequirement: modalData?.packaging_requirement,
+      specifyRequiredCertificate: modalData?.especify_required_certificate,
+      GBRSalesPI: modalData?.gbr_sales_pi,
+      quantity: modalData?.q,
+      referenceCost: modalData?.suppliers_reference_cost,
+      brand: modalData?.brand,
+      masterCarton: modalData?.master_carton,
+      isNewProduct: modalData?.po_type,
+      advanceResponsible: modalData?.advance_responsability,
     },
   });
 
@@ -202,11 +205,7 @@ export default function NewOrderForm() {
               <FormItem>
                 <FormLabel className="text-xl">Reference Cost</FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder="Reference Cost"
-                    type="Number"
-                    {...field}
-                  />
+                  <Input placeholder="Reference Cost" type="Text" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -243,7 +242,7 @@ export default function NewOrderForm() {
             return (
               <FormItem>
                 <FormLabel className="text-xl">Is New Product?</FormLabel>
-                <Select onValueChange={field.onChange}>
+                <Select onValueChange={field.onChange} className="text-white">
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select" />

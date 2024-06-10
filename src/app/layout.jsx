@@ -2,7 +2,7 @@ import "./globals.css";
 import ModalHandler from "@/app/components/ModalHandler.jsx";
 import Header from "./components/Header.jsx";
 import { Inter as FontSans } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils.js";
 
 const fontSans = FontSans({
   subsets: ["latin"],

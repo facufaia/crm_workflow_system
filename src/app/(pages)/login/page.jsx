@@ -2,8 +2,12 @@
 import { useSearchParams, useRouter } from "next/navigation";
 
 const acceptedUsers = [
-  { username: "martin", password: "1234" },
-  { username: "user", password: "1234" },
+  { user_id: "Martin", username: "martin", password: "1234" },
+  { user_id: "Ezequiel", username: "ezequiel", password: "1234" },
+  { user_id: "Fabricio", username: "fabricio", password: "1234" },
+  { user_id: "Javier", username: "javier", password: "1234" },
+  { user_id: "Marcelo", username: "marcelo", password: "1234" },
+  { user_id: "AMI", username: "ami", password: "1234" },
 ];
 
 export default function LoginPage() {
@@ -25,6 +29,13 @@ export default function LoginPage() {
     );
     console.log(redirectURL);
     if (user) {
+      // Establecer una cookie que expire en 1 día
+      const d = new Date();
+      d.setTime(d.getTime() + 10 * 60 * 1000); // 10m en milisegundos
+      const expires = "expires=" + d.toUTCString();
+      document.cookie = "loggedIn=true; " + expires + "; path=/";
+      document.cookie = "user_id=" + user.user_id + "; " + expires + "; path=/"; // Guardar user_id en otra cookie
+
       alert("login successful");
       Router.push(redirectURL);
       return;

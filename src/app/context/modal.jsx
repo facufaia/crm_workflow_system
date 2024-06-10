@@ -2,9 +2,9 @@ import { create } from "zustand";
 
 export const useModalStore = create((set) => ({
   modalAction: null,
-  modalProduct: null,
+  modalData: null,
   modalMessage: null,
   setModalAction: (modalAction) => set({ modalAction }),
-  setModalProduct: (modalProduct) => set({ modalProduct }),
+  setModalData: (modalData) => set({ modalData }),
   setModalMessage: (modalMessage) => set({ modalMessage }),
 }));
